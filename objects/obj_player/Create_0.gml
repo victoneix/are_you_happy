@@ -1,4 +1,4 @@
-spd = 3;
+spd = 2.2;
 hspd = 0;
 vspd = 0;
 
@@ -13,7 +13,4 @@ moving = function(){
 
 	move_and_collide(hspd, 0, obj_collision);
 	move_and_collide(0, vspd, obj_collision);
-	
-	show_debug_message(hspd);
-	show_debug_message(vspd);
 }
