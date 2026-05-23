@@ -4,8 +4,8 @@ vspd = 0;
 move_dir = 0;
 move_spd = 0;
 move_spd_max = 2;
-acc = .3;
-dcc = .3;
+acc = .6;
+dcc = .6;
 
 moving = function(){
 	var _right = keyboard_check(ord("D"));
@@ -29,8 +29,26 @@ moving = function(){
 	hspd = lengthdir_x(move_spd, move_dir);
 	vspd = lengthdir_y(move_spd, move_dir);
 	
-	x+=hspd;
-	y+=vspd;
+}
+
+collision = function(){
+	repeat(abs(hspd)){
+		if(place_meeting(x+sign(hspd), y, obj_collision)){
+			hspd = 0;
+			break;
+		} else{
+			x+=sign(hspd)
+		}
+	}
+	
+	repeat(abs(vspd)){
+		if(place_meeting(x, y+sign(vspd), obj_collision)){
+			vspd = 0;
+			break;
+		} else{
+			y+=sign(vspd)
+		}
+	}
 }
 
 approach = function(val1 = 0, val2 = 0, amount = 0){
