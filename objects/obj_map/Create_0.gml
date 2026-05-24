@@ -17,6 +17,7 @@ if(_seed_info <= 0){
 
 random_set_seed(_seed);
 
+var _npc_max = 9;
 var _dir = irandom(3);
 var _xx = cell_h div 2;
 var _yy = cell_v div 2;
@@ -44,10 +45,18 @@ for(var _xx = 0; _xx < cell_h; _xx++){
 		}
 		
 		if(grid[# _xx, _yy] == 1){
+			var _x1 = _xx * cell + cell / 2;
+			var _y1 = _yy * cell + cell / 2;
 			if(!instance_exists(obj_player)){
-				var _x1 = _xx * cell + cell / 2;
-				var _y1 = _yy * cell + cell / 2;
 				instance_create_layer(_x1, _y1, layer, obj_player);
+			}
+			
+			if(_npc_max > 0){
+				var _chances = 8;
+				if(irandom(_chances) == _chances && point_distance(_x1, _y1, obj_player.x, obj_player.y) > 128){
+					instance_create_layer(_x1, _y1, layer, obj_npc);
+					_npc_max--;
+				}
 			}
 		}
 	}
