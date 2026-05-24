@@ -24,6 +24,14 @@ var _yy = cell_v div 2;
 var _chances = 1;
 var _steps = 400;
 
+north = 1;
+west = 2;
+east = 4;
+sul = 8;
+
+var _tile_layer = layer_tilemap_get_id("wall");
+
+
 for(var i = 0; i < _steps; i++){
 	if(irandom(_chances) == _chances){
 		_dir = irandom(3);
@@ -37,6 +45,22 @@ for(var i = 0; i < _steps; i++){
 
 	grid[# _xx,_yy] = 1;
 }
+
+for(var _xx = 0; _xx < cell_h; _xx++){
+	for(var _yy = 0; _yy < cell_v; _yy++){
+		if(grid[# _xx, _yy] == 0){
+			var _north_t = grid[# _xx, _yy - 1] == 0;
+			var _west_t = grid[# _xx - 1, _yy] == 0;
+			var _east_t = grid[# _xx + 1, _yy] == 0;
+			var _sul_t = grid[# _xx, _yy + 1] == 0;
+			
+			var _tile_index = _north_t * north + _west_t * west + _east_t * east + _sul_t * sul+1;
+			
+			tilemap_set(_tile_layer, _tile_index, _xx, _yy);
+		}
+	}
+}
+
 
 for(var _xx = 0; _xx < cell_h; _xx++){
 	for(var _yy = 0; _yy < cell_v; _yy++){
