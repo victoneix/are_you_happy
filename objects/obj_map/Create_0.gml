@@ -6,16 +6,16 @@ cell_v = room_height div cell;
 grid = ds_grid_create(cell_h, cell_v);
 ds_grid_clear(grid, 0);
 
-var _seed_info = get_integer("Set your seed", 0);
-var _seed = 0;
+//var _seed_info = get_integer("Set your seed", 0);
+//var _seed = 0;
 
-if(_seed_info <= 0){
-	_seed = irandom(99999999);
-} else{
-	_seed = _seed_info;
-}
+//if(_seed_info <= 0){
+//	_seed = irandom(99999999);
+//} else{
+//	_seed = _seed_info;
+//}
 
-random_set_seed(_seed);
+random_set_seed(irandom(99999999));
 
 var _npc_max = 9;
 var _dir = irandom(3);
@@ -51,8 +51,14 @@ for(var _xx = 0; _xx < cell_h; _xx++){
 				instance_create_layer(_x1, _y1, layer, obj_player);
 			}
 			
+			if(!instance_exists(obj_item)){
+				if(point_distance(_x1, _y1, obj_player.x, obj_player.y) > 256){
+					instance_create_layer(_x1, _y1, layer, obj_item);
+				}
+			}
+			
 			if(_npc_max > 0){
-				var _chances = 8;
+				var _chances = 16;
 				if(irandom(_chances) == _chances && point_distance(_x1, _y1, obj_player.x, obj_player.y) > 128){
 					instance_create_layer(_x1, _y1, layer, obj_npc);
 					_npc_max--;
@@ -60,6 +66,12 @@ for(var _xx = 0; _xx < cell_h; _xx++){
 			}
 		}
 	}
+}
+
+if(instance_exists(obj_item)){				
+	show_debug_message("O objeto item foi criado!!!");
+} else {
+	show_debug_message("O objeto item não foi criado!!!");
 }
 
 
