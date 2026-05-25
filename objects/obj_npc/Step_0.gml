@@ -1,2 +1,1 @@
-moving();
 depth = -y;
