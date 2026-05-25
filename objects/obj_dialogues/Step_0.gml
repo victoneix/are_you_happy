@@ -8,8 +8,18 @@ if(_mouse_sobre){
 			my_text.text = text;
 
 		}else{
-			instance_destroy(my_text);
-			my_text = noone;
+			if(my_text.pag >= my_text.pag_max){
+				instance_destroy(my_text);
+				my_text = noone;
+			} else{
+				my_text.pag++;
+				my_text.typing = 0;
+			}
 		}
+	}
+} else{
+	if(_mouse_click && my_text != noone){
+		instance_destroy(my_text);
+		my_text = noone;
 	}
 }
