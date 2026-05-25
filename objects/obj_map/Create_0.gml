@@ -15,7 +15,7 @@ ds_grid_clear(grid, 0);
 //	_seed = _seed_info;
 //}
 
-random_set_seed(irandom(99999999));
+random_set_seed(0);
 
 var _npc_max = 9;
 var _dir = irandom(3);

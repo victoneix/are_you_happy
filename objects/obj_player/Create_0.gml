@@ -1,7 +1,6 @@
 spd = 1.4;
 hspd = 0;
 vspd = 0;
-sprite_index = spr_player_idle;
 
 moving = function(){
 	var _right = keyboard_check(ord("D"));
@@ -21,8 +20,8 @@ moving = function(){
 		sprite_index = spr_player_idle;
 	}
 	
-	show_debug_message(hspd);
-	show_debug_message(vspd);
+	//show_debug_message(hspd);
+	//show_debug_message(vspd);
 
 	move_and_collide(hspd, 0, obj_collision);
 	move_and_collide(0, vspd, obj_collision);
