@@ -8,6 +8,8 @@ moving = function(){
 	var _up = keyboard_check(ord("W"));
 	var _down = keyboard_check(ord("S"));
 	
+	if(instance_exists(obj_text)) exit;
+	
 	var _moving_h = (_right - _left)*spd;
 	var _moving_v = (_down - _up)*spd;
 	
