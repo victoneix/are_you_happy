@@ -1,3 +1,4 @@
+audio_stop_sound(snd_solitude);
 randomize();
 cell = 32;
 cell_h = room_width div cell;

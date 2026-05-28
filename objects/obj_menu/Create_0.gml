@@ -1,0 +1,1 @@
+audio_play_sound(snd_solitude, 0, 1);
