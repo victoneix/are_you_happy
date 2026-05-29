@@ -1,0 +1,1 @@
+global.soul_god = 0;

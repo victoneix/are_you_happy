@@ -1,4 +1,8 @@
 audio_stop_sound(snd_solitude);
+cam_w = camera_get_view_width(view_camera[0]);
+cam_h = camera_get_view_height(view_camera[0]);
+display_set_gui_size(cam_w, cam_h);
+
 randomize();
 cell = 32;
 cell_h = room_width div cell;
@@ -16,7 +20,7 @@ ds_grid_clear(grid, 0);
 //	_seed = _seed_info;
 //}
 
-random_set_seed(0);
+//random_set_seed(0);
 
 var _npc_max = 9;
 var _dir = irandom(3);
