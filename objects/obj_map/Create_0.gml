@@ -1,7 +1,10 @@
 audio_stop_sound(snd_solitude);
+audio_stop_sound(snd_prohibited);
+audio_play_sound(snd_prohibited, 0, 1);
 cam_w = camera_get_view_width(view_camera[0]);
 cam_h = camera_get_view_height(view_camera[0]);
 display_set_gui_size(cam_w, cam_h);
+collected = false;
 
 randomize();
 cell = 32;
@@ -80,17 +83,19 @@ for(var _xx = 0; _xx < cell_h; _xx++){
 				instance_create_layer(_x1, _y1, layer, obj_player);
 			}
 			
-			if(!instance_exists(obj_item)){
-				if(point_distance(_x1, _y1, obj_player.x, obj_player.y) > 256){
-					instance_create_layer(_x1, _y1, layer, obj_item);
-				}
-			}
-			
 			if(_npc_max > 0){
 				var _chances = 16;
 				if(irandom(_chances) == _chances && point_distance(_x1, _y1, obj_player.x, obj_player.y) > 128){
 					instance_create_layer(_x1, _y1, layer, obj_npc);
 					_npc_max--;
+				}
+			}
+			
+			if(!instance_exists(obj_item)){
+				if(point_distance(_x1, _y1, obj_player.x, obj_player.y) > 256){
+					if(!position_meeting(_x1, _y1, obj_npc)){
+						instance_create_layer(_x1, _y1, layer, obj_item);
+					}
 				}
 			}
 		}

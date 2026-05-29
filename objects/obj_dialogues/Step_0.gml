@@ -1,5 +1,4 @@
 var _mouse_click = mouse_check_button_pressed(mb_left);
-
 if(start_dlg){
 	if(my_text == noone){
 		my_text = instance_create_layer(x, y, layer, obj_text);
