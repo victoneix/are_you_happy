@@ -1,0 +1,1 @@
+audio_play_sound(snd_are_you_happy, 0, 1);

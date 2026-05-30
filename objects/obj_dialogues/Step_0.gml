@@ -1,11 +1,11 @@
-var _mouse_click = mouse_check_button_pressed(mb_left);
+var key_space = keyboard_check_pressed(vk_space);
 if(start_dlg){
 	if(my_text == noone){
 		my_text = instance_create_layer(x, y, layer, object_text);
 		my_text.text = text;
 
 	} else{
-		if(_mouse_click){
+		if(key_space){
 			if(my_text.pag >= my_text.pag_max){
 				instance_destroy(my_text);
 				my_text = noone;
