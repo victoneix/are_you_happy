@@ -1,1 +1,8 @@
-text = ["Mojang e a pior empressa do mundo isso e verdade pura. pode confiar em mim |=) HAHA", "Markus Persson", "Notch"];
+text = [
+	"Text0",
+	"Text1",
+	"Text2",
+	"Text3",
+	"Text4",
+	"Text5"
+];

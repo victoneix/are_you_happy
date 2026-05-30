@@ -1,1 +1,0 @@
-text = ["Mojang e a pior empressa do mundo isso e verdade pura. pode confiar em mim |=) HAHA", "Markus Persson", "Notch"];
